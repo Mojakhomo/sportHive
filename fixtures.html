@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportHive - Fixtures</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Modern fixtures styling with weather integration */
+    .fixtures-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    .sport-category {
+      margin-bottom: 3rem;
+    }
+    
+    .sport-header {
+      display: flex;
+      align-items: center;
+      background-color: #012350;
+      color: #ffd700;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    
+    .sport-icon {
+      width: 36px;
+      height: 36px;
+      background-color: #ffd700;
+      color: #012350;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    .fixture-date-header {
+      background-color: #f5f5f5;
+      color: #012350;
+      padding: 0.6rem 1.5rem;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      border-left: 4px solid #ffd700;
+    }
+    
+    .fixture-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      border-left: 4px solid #012350;
+    }
+    
+    .fixture-content {
+      padding: 1.2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    .teams {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .team {
+      display: flex;
+      align-items: center;
+      margin: 0.3rem 0;
+    }
+    
+    .team-name {
+      margin-left: 0.8rem;
+      font-weight: 500;
+      color: #000000; /* Black text for team names */
+    }
+    
+    .match-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .match-time {
+      font-weight: bold;
+      color: #012350;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+    
+    .match-status {
+      font-size: 0.85rem;
+      color: #555;
+    }
+    
+    .weather-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    
+    .weather-condition {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.3rem;
+    }
+    
+    .weather-temp {
+      font-weight: bold;
+      color: #012350;
+    }
+    
+    .competition-info {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem 1.2rem;
+      background: #f9f9f9;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .competition-name {
+      font-weight: 600;
+      margin-left: 0.5rem;
+      color: #000000; /* Black text for competition names */
+    }
+    
+    .live-match {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    .view-all {
+      display: block;
+      text-align: center;
+      padding: 1rem;
+      color: #012350;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 1.5rem;
+    }
+    
+    .view-all:hover {
+      text-decoration: underline;
+    }
+    
+    /* Weather icons */
+    .weather-icon {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .fixture-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .weather-info {
+        align-items: flex-start;
+        margin-top: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SportHive - Fixtures</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="football.html">Football</a></li>
+        <li><a href="basketball.html">Basketball</a></li>
+        <li><a href="tennis.html">Tennis</a></li>
+        <li><a href="cricket.html">Cricket</a></li>
+        <li><a href="betting.html">Betting</a></li>
+        <li><a href="merchandise.html">Merchandise</a></li>
+        <li><a href="statistics.html">Statistics</a></li>
+        <li><a href="fixtures.html">Fixtures</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="content">
+      <h2>Upcoming Fixtures & Weather</h2>
+      
+      <div class="fixtures-container">
+        <!-- Football Section (La Liga, Premier League in black) -->
+        <div class="sport-category">
+          <div class="sport-header">
+            <div class="sport-icon">⚽</div>
+            <h3>Football</h3>
+          </div>
+          
+          <div class="fixture-date-header">Today, March 15</div>
+          
+          <div class="fixture-card">
+            <div class="competition-info">
+              <span class="competition-name" style="color: #000000;">Premier League</span>
+            </div>
+            <div class="fixture-content">
+              <div class="teams">
+                <div class="team">
+                  <span>🏠</span>
+                  <span class="team-name">Arsenal</span>
+                </div>
+                <div class="team">
+                  <span>🟢</span>
+                  <span class="team-name">Chelsea</span>
+                </div>
+                <div class="match-status">Emirates Stadium, London | 19:45 GMT</div>
+              </div>
+              <div class="match-info">
+                <span class="match-time live-match">LIVE 63'</span>
+                <span class="match-status">Score: 2-1</span>
+              </div>
+              <div class="weather-info">
+                <div class="weather-condition">
+                  <span class="weather-icon">🌧️</span>
+                  <span>Rainy</span>
+                </div>
+                <div class="weather-temp">8°C</div>
+                <div class="match-status">84% humidity</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="fixture-card">
+            <div class="competition-info">
+              <span class="competition-name" style="color: #000000;">La Liga</span>
+            </div>
+            <div class="fixture-content">
+              <div class="teams">
+                <div class="team">
+                  <span>🏠</span>
+                  <span class="team-name">Real Madrid</span>
+                </div>
+                <div class="team">
+                  <span>🟢</span>
+                  <span class="team-name">Barcelona</span>
+                </div>
+                <div class="match-status">Santiago Bernabéu, Madrid | 20:00 GMT</div>
+              </div>
+              <div class="match-info">
+                <span class="match-time">20:00</span>
+                <span class="match-status">El Clásico</span>
+              </div>
+              <div class="weather-info">
+                <div class="weather-condition">
+                  <span class="weather-icon">☀️</span>
+                  <span>Sunny</span>
+                </div>
+                <div class="weather-temp">18°C</div>
+                <div class="match-status">45% humidity</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Basketball Section (NBA in black) -->
+        <div class="sport-category">
+          <div class="sport-header">
+            <div class="sport-icon">🏀</div>
+            <h3>Basketball</h3>
+          </div>
+          
+          <div class="fixture-date-header">Tonight, March 15</div>
+          
+          <div class="fixture-card">
+            <div class="competition-info">
+              <span class="competition-name" style="color: #000000;">NBA</span>
+            </div>
+            <div class="fixture-content">
+              <div class="teams">
+                <div class="team">
+                  <span>🏠</span>
+                  <span class="team-name">LA Lakers</span>
+                </div>
+                <div class="team">
+                  <span>🟢</span>
+                  <span class="team-name">Golden State Warriors</span>
+                </div>
+                <div class="match-status">Staples Center, LA | 20:30 GMT</div>
+              </div>
+              <div class="match-info">
+                <span class="match-time">20:30</span>
+                <span class="match-status">Western Conference</span>
+              </div>
+              <div class="weather-info">
+                <div class="weather-condition">
+                  <span class="weather-icon">⛅</span>
+                  <span>Partly Cloudy</span>
+                </div>
+                <div class="weather-temp">22°C</div>
+                <div class="match-status">Indoor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tennis Section (Wimbledon in black) -->
+        <div class="sport-category">
+          <div class="sport-header">
+            <div class="sport-icon">🎾</div>
+            <h3>Tennis</h3>
+          </div>
+          
+          <div class="fixture-date-header">Tomorrow, March 16</div>
+          
+          <div class="fixture-card">
+            <div class="competition-info">
+              <span class="competition-name" style="color: #000000;">Wimbledon</span>
+            </div>
+            <div class="fixture-content">
+              <div class="teams">
+                <div class="team">
+                  <span>🎾</span>
+                  <span class="team-name">Djokovic N. (SRB) [1]</span>
+                </div>
+                <div class="team">
+                  <span>🎾</span>
+                  <span class="team-name">Alcaraz C. (ESP) [3]</span>
+                </div>
+                <div class="match-status">Centre Court, London | 14:00 GMT</div>
+              </div>
+              <div class="match-info">
+                <span class="match-time">14:00</span>
+                <span class="match-status">Men's Singles Final</span>
+              </div>
+              <div class="weather-info">
+                <div class="weather-condition">
+                  <span class="weather-icon">🌤️</span>
+                  <span>Mostly Sunny</span>
+                </div>
+                <div class="weather-temp">16°C</div>
+                <div class="match-status">Retractable roof</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Cricket Section (IPL in black) -->
+        <div class="sport-category">
+          <div class="sport-header">
+            <div class="sport-icon">🏏</div>
+            <h3>Cricket</h3>
+          </div>
+          
+          <div class="fixture-date-header">Sunday, March 17</div>
+          
+          <div class="fixture-card">
+            <div class="competition-info">
+              <span class="competition-name" style="color: #000000;">IPL 2025</span>
+            </div>
+            <div class="fixture-content">
+              <div class="teams">
+                <div class="team">
+                  <span>🏠</span>
+                  <span class="team-name">Mumbai Indians</span>
+                </div>
+                <div class="team">
+                  <span>🟢</span>
+                  <span class="team-name">Chennai Super Kings</span>
+                </div>
+                <div class="match-status">Wankhede Stadium, Mumbai | 15:30 GMT</div>
+              </div>
+              <div class="match-info">
+                <span class="match-time">15:30</span>
+                <span class="match-status">T20 Match</span>
+              </div>
+              <div class="weather-info">
+                <div class="weather-condition">
+                  <span class="weather-icon">🌞</span>
+                  <span>Hot & Humid</span>
+                </div>
+                <div class="weather-temp">34°C</div>
+                <div class="match-status">72% humidity</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <a href="#" class="view-all">View all fixtures for next 7 days →</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 SportHive. All rights reserved.</p>
+  </footer>
+</body>
+</html>

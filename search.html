@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportHive - Search</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="script.js" defer></script>
+  <style>
+    /* Modern Search Page Styles */
+    .search-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .search-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .search-header h2 {
+      font-size: 2.2rem;
+      color: #012350;
+      margin-bottom: 0.5rem;
+    }
+
+    .search-header p {
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    .search-box {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1.2rem 1.5rem 1.2rem 4.5rem;
+      border-radius: 50px;
+      border: 2px solid #012350;
+      font-size: 1.1rem;
+      color: #333;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #ffd700;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #ffd700;
+      font-size: 1.5rem;
+    }
+
+    .search-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.2rem;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: #012350;
+      color: #ffd700;
+      border-color: #012350;
+    }
+
+    .search-results {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .result-item {
+      padding: 1.5rem;
+      border-bottom: 1px solid #eee;
+      transition: background 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .result-item:hover {
+      background: #f9f9f9;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-icon {
+      width: 50px;
+      height: 50px;
+      background: #ffd700;
+      color: #012350;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.5rem;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .result-content {
+      flex-grow: 1;
+    }
+
+    .result-title {
+      font-weight: 600;
+      color: #012350;
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    .result-meta {
+      color: #666;
+      font-size: 0.9rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .result-sport {
+      display: inline-block;
+      padding: 0.2rem 0.8rem;
+      background: #012350;
+      color: #ffd700;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 3rem;
+      color: #666;
+    }
+
+    .search-tips {
+      margin-top: 3rem;
+      background: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+
+    .search-tips h3 {
+      color: #012350;
+      margin-top: 0;
+    }
+
+    .search-tips ul {
+      padding-left: 1.2rem;
+    }
+
+    .search-tips li {
+      margin-bottom: 0.5rem;
+      color:#012350;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .search-header h2 {
+        font-size: 1.8rem;
+      }
+
+      .search-input {
+        padding: 1rem 1.2rem 1rem 3.5rem;
+      }
+
+      .search-icon {
+        left: 1.2rem;
+        font-size: 1.2rem;
+      }
+
+      .result-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .result-icon {
+        margin-bottom: 1rem;
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SportHive - Search</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="football.html">Football</a></li>
+        <li><a href="basketball.html">Basketball</a></li>
+        <li><a href="tennis.html">Tennis</a></li>
+        <li><a href="cricket.html">Cricket</a></li>
+        <li><a href="betting.html">Betting</a></li>
+        <li><a href="merchandise.html">Merchandise</a></li>
+        <li><a href="statistics.html">Statistics</a></li>
+        <li><a href="fixtures.html">Fixtures</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="search-container">
+      <div class="search-header">
+        <h2>Find What You're Looking For</h2>
+        <p>Search matches, players, merchandise, and more across all sports</p>
+      </div>
+
+      <div class="search-box">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search for matches, players, or products..." />
+      </div>
+
+      <div class="search-filters">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Football <i class="fas fa-futbol"></i></button>
+        <button class="filter-btn">Basketball <i class="fas fa-basketball-ball"></i></button>
+        <button class="filter-btn">Tennis <i class="fas fa-table-tennis"></i></button>
+        <button class="filter-btn">Cricket <i class="fas fa-cricket"></i></button>
+        <button class="filter-btn">Merchandise <i class="fas fa-tshirt"></i></button>
+      </div>
+
+      <div class="search-results" id="searchResults">
+        <!-- Sample Results (would be dynamic in a real app) -->
+        <div class="result-item">
+          <div class="result-icon">
+            <i class="fas fa-futbol"></i>
+          </div>
+          <div class="result-content">
+            <div class="result-title">Arsenal vs Chelsea - Premier League</div>
+            <div class="result-meta">
+              <span><i class="far fa-calendar"></i> Today, 19:45 GMT</span>
+              <span><i class="fas fa-map-marker-alt"></i> Emirates Stadium</span>
+            </div>
+            <span class="result-sport">Football</span>
+          </div>
+        </div>
+
+        <div class="result-item">
+          <div class="result-icon">
+            <i class="fas fa-basketball-ball"></i>
+          </div>
+          <div class="result-content">
+            <div class="result-title">LA Lakers vs Golden State Warriors</div>
+            <div class="result-meta">
+              <span><i class="far fa-calendar"></i> Tonight, 20:30 GMT</span>
+              <span><i class="fas fa-map-marker-alt"></i> Staples Center</span>
+            </div>
+            <span class="result-sport">Basketball</span>
+          </div>
+        </div>
+
+        <div class="result-item">
+          <div class="result-icon">
+            <i class="fas fa-tshirt"></i>
+          </div>
+          <div class="result-content">
+            <div class="result-title">Arsenal 2024/25 Home Authentic Jersey</div>
+            <div class="result-meta">
+              <span><i class="fas fa-tag"></i> M89.99 (25% off)</span>
+              <span><i class="fas fa-shipping-fast"></i> Free Prime Delivery</span>
+            </div>
+            <span class="result-sport">Merchandise</span>
+          </div>
+        </div>
+
+        <div class="result-item">
+          <div class="result-icon">
+            <i class="fas fa-cricket"></i>
+          </div>
+          <div class="result-content">
+            <div class="result-title">Mumbai Indians vs Chennai Super Kings - IPL</div>
+            <div class="result-meta">
+              <span><i class="far fa-calendar"></i> Sun, 15:30 GMT</span>
+              <span><i class="fas fa-map-marker-alt"></i> Wankhede Stadium</span>
+            </div>
+            <span class="result-sport">Cricket</span>
+          </div>
+        </div>
+
+        <div class="result-item">
+          <div class="result-icon">
+            <i class="fas fa-table-tennis"></i>
+          </div>
+          <div class="result-content">
+            <div class="result-title">Djokovic vs Alcaraz - Wimbledon Final</div>
+            <div class="result-meta">
+              <span><i class="far fa-calendar"></i> Tomorrow, 14:00 GMT</span>
+              <span><i class="fas fa-map-marker-alt"></i> Centre Court</span>
+            </div>
+            <span class="result-sport">Tennis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-tips">
+        <h3>Search Tips</h3>
+        <ul>
+          <li>Try searching by team name, player name, or product type</li>
+          <li>Use filters to narrow down your search by sport or category</li>
+          <li>Check the spelling of your search terms</li>
+          <li>Browse our <a href="help.html">help section</a> for more tips</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 SportHive. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Enhanced Search Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('searchInput');
+      const searchResults = document.getElementById('searchResults');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      
+      // Sample data (in a real app, this would come from an API)
+      const allResults = [
+        {
+          title: "Arsenal vs Chelsea - Premier League",
+          sport: "Football",
+          icon: "fa-futbol",
+          meta: [
+            { icon: "far fa-calendar", text: "Today, 19:45 GMT" },
+            { icon: "fas fa-map-marker-alt", text: "Emirates Stadium" }
+          ]
+        },
+        {
+          title: "LA Lakers vs Golden State Warriors",
+          sport: "Basketball",
+          icon: "fa-basketball-ball",
+          meta: [
+            { icon: "far fa-calendar", text: "Tonight, 20:30 GMT" },
+            { icon: "fas fa-map-marker-alt", text: "Staples Center" }
+          ]
+        },
+        {
+          title: "Arsenal 2024/25 Home Authentic Jersey",
+          sport: "Merchandise",
+          icon: "fa-tshirt",
+          meta: [
+            { icon: "fas fa-tag", text: "M89.99 (25% off)" },
+            { icon: "fas fa-shipping-fast", text: "Free Prime Delivery" }
+          ]
+        },
+        {
+          title: "Mumbai Indians vs Chennai Super Kings - IPL",
+          sport: "Cricket",
+          icon: "fa-cricket",
+          meta: [
+            { icon: "far fa-calendar", text: "Sun, 15:30 GMT" },
+            { icon: "fas fa-map-marker-alt", text: "Wankhede Stadium" }
+          ]
+        },
+        {
+          title: "Djokovic vs Alcaraz - Wimbledon Final",
+          sport: "Tennis",
+          icon: "fa-table-tennis",
+          meta: [
+            { icon: "far fa-calendar", text: "Tomorrow, 14:00 GMT" },
+            { icon: "fas fa-map-marker-alt", text: "Centre Court" }
+          ]
+        }
+      ];
+      
+      // Filter buttons functionality
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          filterResults();
+        });
+      });
+      
+      // Search input functionality
+      searchInput.addEventListener('input', filterResults);
+      
+      function filterResults() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const activeFilter = document.querySelector('.filter-btn.active').textContent.toLowerCase();
+        
+        const filteredResults = allResults.filter(result => {
+          const matchesSearch = result.title.toLowerCase().includes(searchTerm);
+          const matchesFilter = activeFilter === 'all' || 
+                              result.sport.toLowerCase() === activeFilter ||
+                              (activeFilter.includes('merchandise') && result.sport.toLowerCase() === 'merchandise');
+          
+          return matchesSearch && matchesFilter;
+        });
+        
+        displayResults(filteredResults);
+      }
+      
+      function displayResults(results) {
+        if (results.length === 0) {
+          searchResults.innerHTML = `
+            <div class="no-results">
+              <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem;"></i>
+              <h3>No results found</h3>
+              <p>Try adjusting your search or filters</p>
+            </div>
+          `;
+          return;
+        }
+        
+        searchResults.innerHTML = results.map(result => `
+          <div class="result-item">
+            <div class="result-icon">
+              <i class="fas ${result.icon}"></i>
+            </div>
+            <div class="result-content">
+              <div class="result-title">${result.title}</div>
+              <div class="result-meta">
+                ${result.meta.map(item => `
+                  <span><i class="${item.icon}"></i> ${item.text}</span>
+                `).join('')}
+              </div>
+              <span class="result-sport">${result.sport}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportHive - Statistics</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js" defer></script>
+  <style>
+    /* Additional inline CSS just for the statistics cards */
+    .stats-card,
+    .stats-card h3,
+    .stats-card table,
+    .stats-card th,
+    .stats-card td {
+      color: #000000; /* Pure black text */
+    }
+    .stats-card {
+      background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    }
+    .stats-card h3 {
+      border-bottom: 2px solid #ffd700; /* Keep gold accent */
+    }
+    .stats-table th {
+      background-color: #f5f5f5; /* Light gray header */
+    }
+    .stats-table tr:nth-child(even) {
+      background-color: #f9f9f9; /* Zebra striping */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SportHive - Statistics</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="football.html">Football</a></li>
+        <li><a href="basketball.html">Basketball</a></li>
+        <li><a href="tennis.html">Tennis</a></li>
+        <li><a href="cricket.html">Cricket</a></li>
+        <li><a href="betting.html">Betting</a></li>
+        <li><a href="merchandise.html">Merchandise</a></li>
+        <li><a href="statistics.html">Statistics</a></li>
+        <li><a href="fixtures.html">Fixtures</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="content">
+      <h2>Football Statistics</h2>
+      <p>Premier League 2024/25 season stats and results</p>
+      
+      <div class="stats-container">
+        <!-- Top Performers Card -->
+        <div class="stats-card">
+          <h3>Top Scorers</h3>
+          <div class="stats-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Player</th>
+                  <th>Team</th>
+                  <th>Goals</th>
+                  <th>Assists</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Erling Haaland</td>
+                  <td>Man City</td>
+                  <td>22</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>Mohamed Salah</td>
+                  <td>Liverpool</td>
+                  <td>18</td>
+                  <td>9</td>
+                </tr>
+                <tr>
+                  <td>Ollie Watkins</td>
+                  <td>Aston Villa</td>
+                  <td>16</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>Bukayo Saka</td>
+                  <td>Arsenal</td>
+                  <td>14</td>
+                  <td>8</td>
+                </tr>
+                <tr>
+                  <td>Son Heung-min</td>
+                  <td>Tottenham</td>
+                  <td>14</td>
+                  <td>6</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Performance Chart -->
+        <div class="stats-card">
+          <h3>Goals Per Match</h3>
+          <div class="chart-container">
+            <canvas id="performance-chart"></canvas>
+          </div>
+        </div>
+
+        <!-- Team Standings -->
+        <div class="stats-card">
+          <h3>League Table</h3>
+          <div class="stats-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pos</th>
+                  <th>Team</th>
+                  <th>P</th>
+                  <th>W</th>
+                  <th>D</th>
+                  <th>L</th>
+                  <th>Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Arsenal</td>
+                  <td>30</td>
+                  <td>22</td>
+                  <td>5</td>
+                  <td>3</td>
+                  <td>71</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Liverpool</td>
+                  <td>30</td>
+                  <td>21</td>
+                  <td>7</td>
+                  <td>2</td>
+                  <td>70</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Man City</td>
+                  <td>30</td>
+                  <td>21</td>
+                  <td>5</td>
+                  <td>4</td>
+                  <td>68</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Aston Villa</td>
+                  <td>30</td>
+                  <td>18</td>
+                  <td>5</td>
+                  <td>7</td>
+                  <td>59</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Tottenham</td>
+                  <td>30</td>
+                  <td>17</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>57</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Recent Results -->
+        <div class="stats-card">
+          <h3>Recent Matches</h3>
+          <div class="stats-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Match</th>
+                  <th>Date</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Arsenal vs Chelsea</td>
+                  <td>15 Mar 2025</td>
+                  <td>3-1</td>
+                </tr>
+                <tr>
+                  <td>Liverpool vs Man City</td>
+                  <td>14 Mar 2025</td>
+                  <td>2-2</td>
+                </tr>
+                <tr>
+                  <td>Man Utd vs Everton</td>
+                  <td>13 Mar 2025</td>
+                  <td>1-0</td>
+                </tr>
+                <tr>
+                  <td>Tottenham vs Fulham</td>
+                  <td>12 Mar 2025</td>
+                  <td>3-1</td>
+                </tr>
+                <tr>
+                  <td>Newcastle vs West Ham</td>
+                  <td>11 Mar 2025</td>
+                  <td>2-2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 SportHive. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize performance chart
+      const ctx = document.getElementById('performance-chart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Arsenal', 'Liverpool', 'Man City', 'Aston Villa', 'Tottenham'],
+          datasets: [{
+            label: 'Goals Scored',
+            data: [68, 65, 63, 59, 57],
+            backgroundColor: 'rgba(255, 215, 0, 0.7)',
+            borderColor: 'rgba(255, 215, 0, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                color: '#000000' // Black text for chart legend
+              }
+            },
+            title: {
+              display: true,
+              text: 'Top Teams Goal Difference',
+              color: '#000000' // Black title
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                color: '#000000' // Black axis labels
+              }
+            },
+            x: {
+              ticks: {
+                color: '#000000' // Black axis labels
+              }
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

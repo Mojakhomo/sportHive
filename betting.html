@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportHive - Betting</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Enhanced betting styles */
+    .betting-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .betting-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      color: #000;
+    }
+    
+    .betting-header {
+      background: #012350;
+      color: #ffd700;
+      padding: 1rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .match-details {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .teams {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    
+    .match-meta {
+      font-size: 0.9rem;
+      color: #555;
+    }
+    
+    .betting-options {
+      padding: 1rem;
+    }
+    
+    .bet-type {
+      margin-bottom: 1.5rem;
+    }
+    
+    .bet-type-title {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #012350;
+    }
+    
+    .bet-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem;
+      margin: 0.3rem 0;
+      background: #f9f9f9;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .bet-option:hover {
+      background: #f0f0f0;
+    }
+    
+    .bet-option.selected {
+      background: #e6f7ff;
+      border: 1px solid #1890ff;
+    }
+    
+    .odd {
+      font-weight: bold;
+      color: #012350;
+    }
+    
+    .payout {
+      font-size: 0.8rem;
+      color: #555;
+    }
+    
+    .bet-form {
+      padding: 1rem;
+      background: #f5f5f5;
+    }
+    
+    .stake-input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    
+    .potential-payout {
+      background: #012350;
+      color: white;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: bold;
+    }
+    
+    .place-bet-btn {
+      width: 100%;
+      padding: 1rem;
+      background: #ffd700;
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .place-bet-btn:hover {
+      background: #e6c200;
+    }
+    
+    .responsible-gaming {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #fff8e6;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SportHive - Betting</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="football.html">Football</a></li>
+        <li><a href="basketball.html">Basketball</a></li>
+        <li><a href="tennis.html">Tennis</a></li>
+        <li><a href="cricket.html">Cricket</a></li>
+        <li><a href="betting.html">Betting</a></li>
+        <li><a href="merchandise.html">Merchandise</a></li>
+        <li><a href="statistics.html">Statistics</a></li>
+        <li><a href="fixtures.html">Fixtures</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="content">
+      <h2>Sports Betting</h2>
+      <p>Place your bets on live matches across all sports. Competitive odds and real-time updates.</p>
+      
+      <div class="betting-container">
+        <!-- Football Betting Card -->
+        <div class="betting-card">
+          <div class="betting-header">
+            <span>Football</span>
+            <span class="match-status">Live</span>
+          </div>
+          <div class="match-details">
+            <div class="teams">Arsenal vs Chelsea</div>
+            <div class="match-meta">Premier League • 75' minute • Emirates Stadium</div>
+          </div>
+          <div class="betting-options">
+            <div class="bet-type">
+              <div class="bet-type-title">Match Winner</div>
+              <div class="bet-option">
+                <span>Arsenal</span>
+                <div class="odds-info">
+                  <span class="odd">2.10</span>
+                  <span class="payout">Payout: M210.00</span>
+                </div>
+              </div>
+              <div class="bet-option selected">
+                <span>Chelsea</span>
+                <div class="odds-info">
+                  <span class="odd">3.25</span>
+                  <span class="payout">Payout: M325.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Draw</span>
+                <div class="odds-info">
+                  <span class="odd">3.50</span>
+                  <span class="payout">Payout: M350.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bet-type">
+              <div class="bet-type-title">Next Goalscorer</div>
+              <div class="bet-option">
+                <span>Bukayo Saka</span>
+                <div class="odds-info">
+                  <span class="odd">4.50</span>
+                  <span class="payout">Payout: M450.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Kai Havertz</span>
+                <div class="odds-info">
+                  <span class="odd">5.00</span>
+                  <span class="payout">Payout: M500.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>No Goalscorer</span>
+                <div class="odds-info">
+                  <span class="odd">2.75</span>
+                  <span class="payout">Payout: M275.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bet-type">
+              <div class="bet-type-title">Total Goals</div>
+              <div class="bet-option">
+                <span>Over 2.5</span>
+                <div class="odds-info">
+                  <span class="odd">1.80</span>
+                  <span class="payout">Payout: M180.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Under 2.5</span>
+                <div class="odds-info">
+                  <span class="odd">2.05</span>
+                  <span class="payout">Payout: M205.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bet-form">
+            <input type="number" class="stake-input" placeholder="Enter stake (M)" min="10" value="100">
+            <div class="potential-payout">
+              Potential Payout: M325.00
+            </div>
+            <button class="place-bet-btn">Place Bet</button>
+          </div>
+        </div>
+        
+        <!-- Basketball Betting Card -->
+        <div class="betting-card">
+          <div class="betting-header">
+            <span>Basketball</span>
+            <span class="match-status">Today 19:30</span>
+          </div>
+          <div class="match-details">
+            <div class="teams">LA Lakers vs Golden State Warriors</div>
+            <div class="match-meta">NBA • Staples Center</div>
+          </div>
+          <div class="betting-options">
+            <div class="bet-type">
+              <div class="bet-type-title">Moneyline</div>
+              <div class="bet-option">
+                <span>Lakers</span>
+                <div class="odds-info">
+                  <span class="odd">1.95</span>
+                  <span class="payout">Payout: M195.00</span>
+                </div>
+              </div>
+              <div class="bet-option selected">
+                <span>Warriors</span>
+                <div class="odds-info">
+                  <span class="odd">1.85</span>
+                  <span class="payout">Payout: M185.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bet-type">
+              <div class="bet-type-title">Point Spread (-5.5)</div>
+              <div class="bet-option">
+                <span>Lakers -5.5</span>
+                <div class="odds-info">
+                  <span class="odd">1.90</span>
+                  <span class="payout">Payout: M190.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Warriors +5.5</span>
+                <div class="odds-info">
+                  <span class="odd">1.90</span>
+                  <span class="payout">Payout: M190.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bet-type">
+              <div class="bet-type-title">Total Points</div>
+              <div class="bet-option">
+                <span>Over 225.5</span>
+                <div class="odds-info">
+                  <span class="odd">1.95</span>
+                  <span class="payout">Payout: M195.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Under 225.5</span>
+                <div class="odds-info">
+                  <span class="odd">1.85</span>
+                  <span class="payout">Payout: M185.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bet-type">
+              <div class="bet-type-title">Player Props</div>
+              <div class="bet-option">
+                <span>LeBron James 25+ Points</span>
+                <div class="odds-info">
+                  <span class="odd">2.10</span>
+                  <span class="payout">Payout: M210.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Steph Curry 5+ Threes</span>
+                <div class="odds-info">
+                  <span class="odd">2.50</span>
+                  <span class="payout">Payout: M250.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bet-form">
+            <input type="number" class="stake-input" placeholder="Enter stake (M)" min="10" value="100">
+            <div class="potential-payout">
+              Potential Payout: M185.00
+            </div>
+            <button class="place-bet-btn">Place Bet</button>
+          </div>
+        </div>
+        
+        <!-- Tennis Betting Card -->
+        <div class="betting-card">
+          <div class="betting-header">
+            <span>Tennis</span>
+            <span class="match-status">Tomorrow 14:00</span>
+          </div>
+          <div class="match-details">
+            <div class="teams">Novak Djokovic vs Carlos Alcaraz</div>
+            <div class="match-meta">Wimbledon Semifinal • Centre Court</div>
+          </div>
+          <div class="betting-options">
+            <div class="bet-type">
+              <div class="bet-type-title">Match Winner</div>
+              <div class="bet-option selected">
+                <span>Djokovic</span>
+                <div class="odds-info">
+                  <span class="odd">1.72</span>
+                  <span class="payout">Payout: M172.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Alcaraz</span>
+                <div class="odds-info">
+                  <span class="odd">2.10</span>
+                  <span class="payout">Payout: M210.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bet-type">
+              <div class="bet-type-title">Set Betting</div>
+              <div class="bet-option">
+                <span>Djokovic 3-0</span>
+                <div class="odds-info">
+                  <span class="odd">3.50</span>
+                  <span class="payout">Payout: M350.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Djokovic 3-1</span>
+                <div class="odds-info">
+                  <span class="odd">4.00</span>
+                  <span class="payout">Payout: M400.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Alcaraz 3-2</span>
+                <div class="odds-info">
+                  <span class="odd">6.50</span>
+                  <span class="payout">Payout: M650.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bet-type">
+              <div class="bet-type-title">Total Games</div>
+              <div class="bet-option">
+                <span>Over 38.5</span>
+                <div class="odds-info">
+                  <span class="odd">1.83</span>
+                  <span class="payout">Payout: M183.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Under 38.5</span>
+                <div class="odds-info">
+                  <span class="odd">1.95</span>
+                  <span class="payout">Payout: M195.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bet-form">
+            <input type="number" class="stake-input" placeholder="Enter stake (M)" min="10" value="100">
+            <div class="potential-payout">
+              Potential Payout: M172.00
+            </div>
+            <button class="place-bet-btn">Place Bet</button>
+          </div>
+        </div>
+        
+        <!-- Cricket Betting Card -->
+        <div class="betting-card">
+          <div class="betting-header">
+            <span>Cricket</span>
+            <span class="match-status">Today 19:30</span>
+          </div>
+          <div class="match-details">
+            <div class="teams">Mumbai Indians vs Chennai Super Kings</div>
+            <div class="match-meta">IPL • Wankhede Stadium</div>
+          </div>
+          <div class="betting-options">
+            <div class="bet-type">
+              <div class="bet-type-title">Match Winner</div>
+              <div class="bet-option">
+                <span>Mumbai Indians</span>
+                <div class="odds-info">
+                  <span class="odd">1.90</span>
+                  <span class="payout">Payout: M190.00</span>
+                </div>
+              </div>
+              <div class="bet-option selected">
+                <span>Chennai Super Kings</span>
+                <div class="odds-info">
+                  <span class="odd">1.95</span>
+                  <span class="payout">Payout: M195.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bet-type">
+              <div class="bet-type-title">Top Batsman (MI)</div>
+              <div class="bet-option">
+                <span>Rohit Sharma</span>
+                <div class="odds-info">
+                  <span class="odd">3.75</span>
+                  <span class="payout">Payout: M375.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Suryakumar Yadav</span>
+                <div class="odds-info">
+                  <span class="odd">4.00</span>
+                  <span class="payout">Payout: M400.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bet-type">
+              <div class="bet-type-title">Total Runs</div>
+              <div class="bet-option">
+                <span>Over 340.5</span>
+                <div class="odds-info">
+                  <span class="odd">1.85</span>
+                  <span class="payout">Payout: M185.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Under 340.5</span>
+                <div class="odds-info">
+                  <span class="odd">1.95</span>
+                  <span class="payout">Payout: M195.00</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bet-type">
+              <div class="bet-type-title">Method of 1st Dismissal</div>
+              <div class="bet-option">
+                <span>Caught</span>
+                <div class="odds-info">
+                  <span class="odd">1.65</span>
+                  <span class="payout">Payout: M165.00</span>
+                </div>
+              </div>
+              <div class="bet-option">
+                <span>Bowled</span>
+                <div class="odds-info">
+                  <span class="odd">3.25</span>
+                  <span class="payout">Payout: M325.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bet-form">
+            <input type="number" class="stake-input" placeholder="Enter stake (M)" min="10" value="100">
+            <div class="potential-payout">
+              Potential Payout: M195.00
+            </div>
+            <button class="place-bet-btn">Place Bet</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="responsible-gaming">
+        <strong>Please gamble responsibly:</strong> Never bet more than you can afford to lose. 
+        Our minimum stake is M10. Remember that betting should be entertaining, not a way to make money.
+        <a href="#">Get help</a> if you're concerned about your gambling.
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 SportHive. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    // Simple interactivity for betting options
+    document.querySelectorAll('.bet-option').forEach(option => {
+      option.addEventListener('click', function() {
+        // Remove selected class from siblings
+        this.parentNode.querySelectorAll('.bet-option').forEach(el => {
+          el.classList.remove('selected');
+        });
+        // Add to clicked option
+        this.classList.add('selected');
+        
+        // Update potential payout
+        const odd = parseFloat(this.querySelector('.odd').textContent);
+        const stake = parseFloat(document.querySelector('.stake-input').value) || 0;
+        const payout = (odd * stake).toFixed(2);
+        
+        this.closest('.betting-card').querySelector('.potential-payout').textContent = 
+          `Potential Payout: M${payout}`;
+      });
+    });
+    
+    // Update payout when stake changes
+    document.querySelectorAll('.stake-input').forEach(input => {
+      input.addEventListener('input', function() {
+        const card = this.closest('.betting-card');
+        const selectedOption = card.querySelector('.bet-option.selected');
+        if (selectedOption) {
+          const odd = parseFloat(selectedOption.querySelector('.odd').textContent);
+          const stake = parseFloat(this.value) || 0;
+          const payout = (odd * stake).toFixed(2);
+          card.querySelector('.potential-payout').textContent = 
+            `Potential Payout: M${payout}`;
+        }
+      });
+    });
+    
+    // Place bet button
+    document.querySelectorAll('.place-bet-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const card = this.closest('.betting-card');
+        const teams = card.querySelector('.teams').textContent;
+        const selectedOption = card.querySelector('.bet-option.selected');
+        const stake = card.querySelector('.stake-input').value;
+        
+        if (!selectedOption || !stake) {
+          alert('Please select a bet option and enter a stake amount');
+          return;
+        }
+        
+        const selection = selectedOption.querySelector('span').textContent;
+        const odd = selectedOption.querySelector('.odd').textContent;
+        const payout = (odd * stake).toFixed(2);
+        
+        alert(`Bet placed on ${teams}\nSelection: ${selection}\nStake: M${stake}\nOdds: ${odd}\nPotential Payout: M${payout}\n\nGood luck!`);
+      });
+    });
+  </script>
+</body>
+</html>

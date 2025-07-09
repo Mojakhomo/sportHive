@@ -1,0 +1,874 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #eed33d;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Header & Navigation */
+header {
+  background: #3d3b3b4b;
+  padding: 1rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(223, 238, 15, 0.938);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 4rem;
+  color: #012350;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0.5rem;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background: #222;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+  background: #FFD700;
+}
+
+/* Hero Section */
+.hero {
+  background: url('home\ page.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h2 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.5rem;
+}
+
+/* Advertisements */
+#advertisements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
+.ad-section {
+  padding: 2rem;
+  margin: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  width: calc(75% - 2rem);
+  height: calc(50%-2rem);
+  transition: transform 0.3s ease;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ad-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 1;
+}
+
+.ad-section h3, .ad-section p, .ad-section a {
+  position: relative;
+  z-index: 2;
+}
+
+.betting-ad {
+  background-image: url('bets2.jpg'); 
+}
+
+.merchandise-ad {
+  background-image: url('merch.jpg'); 
+}
+
+.premium-ad {
+  background-image: url('live.jpg'); 
+}
+
+.matches-ad {
+  background-image: url('balls.jpg'); 
+}
+.ad-section:hover {
+  transform: scale(1.05);
+}
+
+/* Advertisement Link Animations */
+.ad-section a {
+  display: inline-block;
+  background: #ffd700;
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.ad-section a:hover {
+  background: #e6b800;
+  transform: translateY(-5px);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ===== About Section Styles ===== */
+.about-section {
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+  color: #333;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: #012350;
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* About Cards with Background Images */
+.about-card {
+  border-radius: 8px;
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.card-content {
+  position: relative;
+  z-index: 3;
+  color: white;
+  padding: 2rem;
+  width: 100%;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.about-card:hover .card-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.card-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.card-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* Button Styling */
+.btn-outline {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: white;
+  color: #012350;
+  text-decoration: none;
+}
+
+/* Documentation Sections */
+.doc-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: none;
+}
+
+.doc-section:target {
+  display: block;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-card {
+    min-height: 250px;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 2rem 1rem;
+  }
+  
+  .card-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .btn-outline {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-card {
+    min-height: 200px;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 2rem 1rem;
+  }
+  
+  .card-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .btn-outline {
+    padding: 0.4rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}
+/* Feedback and Supplier Forms */
+.feedback, .supplier {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feedback textarea, .supplier textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #000000;
+  margin-bottom: 1rem;
+}
+
+.feedback button, .supplier button {
+  background: #ffd700;
+  color: #000;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.feedback button:hover, .supplier button:hover {
+  background: #e6b800;
+}
+
+/* Premium Section */
+.premium-section {
+  padding: 2rem;
+  background: linear-gradient(135deg, #000, #333);
+  color: #fff;
+  text-align: center;
+}
+
+.premium-benefits ul {
+  list-style: none;
+  padding: 0;
+}
+
+.premium-benefits button {
+  background: #ffd700;
+  color: #000;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.premium-benefits button:hover {
+  background: #e6b800;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #3624804b;
+  margin-top: 2rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animated-section {
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.sports-images img {
+  width: 200px;
+  height: auto;
+  margin: 10px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.sports-images img:hover {
+  transform: scale(1.1);
+}
+/* Statistics Page Styles */
+.stats-filter {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  align-items: center;
+}
+
+.stats-filter select, .stats-filter button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.stats-filter button {
+  background: #ffd700;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.stats-filter button:hover {
+  background: #e6b800;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.stats-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card h3 {
+  color: #012350;
+  margin-top: 0;
+  border-bottom: 2px solid #ffd700;
+  padding-bottom: 0.5rem;
+}
+
+.stats-table {
+  overflow-x: auto;
+}
+
+.stats-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stats-table th, .stats-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.stats-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.stats-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.chart-container {
+  position: relative;
+  height: 250px;
+  width: 100%;
+}
+
+/* Documents Section with SportHive Yellow/Gold Theme */
+.documents-section {
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+}
+
+.section-title {
+  color: #012350;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  color: #666;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.document-card {
+  background: #ffd700; /* SportHive gold */
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 2px solid #012350; /* Navy border */
+}
+
+.document-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.card-icon {
+  color: #012350; /* Navy */
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.document-card h3 {
+  color: #012350; /* Navy */
+  margin: 0 0 0.5rem 0;
+}
+
+.document-card > p {
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.card-details {
+  border-top: 2px solid #012350;
+  padding-top: 1rem;
+  margin-top: auto;
+}
+
+.card-details p {
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  background: #012350; /* Navy */
+  color: #ffd700; /* Gold text */
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 2px solid #012350;
+}
+
+.download-btn:hover {
+  background: #ffd700; /* Gold */
+  color: #012350; /* Navy text */
+}
+
+.download-btn i {
+  margin-right: 0.5rem;
+}
+#EAA{
+  background-color: #fff;
+}
+
+#EAA h2 {
+  color: #000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .documents-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+/* ===== Help Page Styles ===== */
+.help-section {
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+  color: #333;
+  position: relative;
+}
+
+.help-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.help-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.help-header h2 {
+  font-size: 2.5rem;
+  color: #012350;
+  margin-bottom: 1rem;
+}
+
+.help-header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* FAQ Section */
+.faq-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.faq-list {
+  list-style: none;
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+  padding: 1.2rem;
+  background: #012350;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question i {
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  padding: 0 1.2rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background: #fff;
+  color: #333;
+}
+
+.faq-item.active .faq-answer {
+  padding: 1.2rem;
+  max-height: 300px;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+/* Contact Section */
+.contact-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.contact-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.contact-card {
+  flex: 1 1 300px;
+  background: black;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-card i {
+  font-size: 2.5rem;
+  color: #012350;
+  margin-bottom: 1rem;
+}
+
+.contact-form {
+  margin-top: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #012350;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: #012350;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #ffd700;
+  color: #012350;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .help-header h2 {
+    font-size: 2rem;
+  }
+  
+  .contact-methods {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .faq-question,
+  .faq-item.active .faq-answer {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .help-section {
+    padding: 2rem 1rem;
+  }
+  
+  .help-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .contact-card i {
+    font-size: 2rem;
+  }
+}

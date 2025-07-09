@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportHive - Merchandise</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Amazon-inspired merchandise styles */
+    .merchandise-container {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .filters-section {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+    
+    .filter-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-group label {
+      color: #000;
+    }
+    
+    .filter-title {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      color: #012350;
+    }
+    
+    .filter-option {
+      display: flex;
+      align-items: center;
+      margin: 0.3rem 0;
+    }
+    
+    .filter-option input {
+      margin-right: 0.5rem;
+    }
+    
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .sort-options {
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .product-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #ffd700;
+      color: #000;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .product-image {
+      height: 200px;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    
+    .product-image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      color: #000;
+    }
+    
+    .product-info {
+      padding: 1rem;
+    }
+    
+    .product-title {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      height: 2.8rem;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    
+    .product-rating {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stars {
+      color: #ffa41c;
+      margin-right: 0.3rem;
+    }
+    
+    .rating-count {
+      font-size: 0.8rem;
+      color: #555;
+    }
+    
+    .product-price {
+      margin-bottom: 0.5rem;
+    }
+    
+    .current-price {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #b12704;
+    }
+    
+    .original-price {
+      text-decoration: line-through;
+      color: #555;
+      font-size: 0.9rem;
+      margin-left: 0.5rem;
+    }
+    
+    .discount {
+      color: #388e3c;
+      font-size: 0.9rem;
+      margin-left: 0.5rem;
+    }
+    
+    .delivery-info {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+    
+    .prime-badge {
+      color: #00a8e1;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+    
+    .add-to-cart {
+      width: 100%;
+      padding: 0.5rem;
+      background: #ffd700;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s;
+    }
+    
+    .add-to-cart:hover {
+      background: #e6c200;
+    }
+    
+    .buy-now {
+      width: 100%;
+      padding: 0.5rem;
+      background: #ffa41c;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 0.3rem;
+      transition: background 0.2s;
+    }
+    
+    .buy-now:hover {
+      background: #e68a00;
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      gap: 0.5rem;
+    }
+    
+    .page-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid #ddd;
+      background: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    
+    .page-btn.active {
+      background: #012350;
+      color: white;
+      border-color: #012350;
+    }
+    
+    .cart-summary {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ffd700;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      z-index: 100;
+    }
+    
+    .cart-count {
+      background: #012350;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0.5rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SportHive - Merchandise</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="football.html">Football</a></li>
+        <li><a href="basketball.html">Basketball</a></li>
+        <li><a href="tennis.html">Tennis</a></li>
+        <li><a href="cricket.html">Cricket</a></li>
+        <li><a href="betting.html">Betting</a></li>
+        <li><a href="merchandise.html">Merchandise</a></li>
+        <li><a href="statistics.html">Statistics</a></li>
+        <li><a href="fixtures.html">Fixtures</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="content">
+      <h2>Official SportHive Merchandise</h2>
+      <p>Authentic jerseys, equipment, and fan gear for all sports</p>
+      
+      <div class="merchandise-container">
+        <!-- Filters Section -->
+        <div class="filters-section">
+          <h3>Filter By</h3>
+          
+          <div class="filter-group">
+            <div class="filter-title">Categories</div>
+            <div class="filter-option">
+              <input type="checkbox" id="jerseys" checked>
+              <label for="jerseys">Jerseys (42)</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="shoes">
+              <label for="shoes">Shoes (18)</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="equipment">
+              <label for="equipment">Equipment (27)</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="accessories">
+              <label for="accessories">Accessories (35)</label>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <div class="filter-title">Sports</div>
+            <div class="filter-option">
+              <input type="checkbox" id="football" checked>
+              <label for="football">Football (58)</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="basketball">
+              <label for="basketball">Basketball (32)</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="tennis">
+              <label for="tennis">Tennis (24)</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="cricket">
+              <label for="cricket">Cricket (18)</label>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <div class="filter-title">Price</div>
+            <div class="filter-option">
+              <input type="radio" name="price" id="under50">
+              <label for="under50">Under M50 (26)</label>
+            </div>
+            <div class="filter-option">
+              <input type="radio" name="price" id="50to100">
+              <label for="50to100">M50 to M100 (47)</label>
+            </div>
+            <div class="filter-option">
+              <input type="radio" name="price" id="100to200">
+              <label for="100to200">M100 to M200 (32)</label>
+            </div>
+            <div class="filter-option">
+              <input type="radio" name="price" id="over200" checked>
+              <label for="over200">Over M200 (18)</label>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <div class="filter-title">Brands</div>
+            <div class="filter-option">
+              <input type="checkbox" id="nike" checked>
+              <label for="nike">Nike (42)</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="adidas">
+              <label for="adidas">Adidas (38)</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="puma">
+              <label for="puma">Puma (22)</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="new-balance">
+              <label for="new-balance">New Balance (15)</label>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <div class="filter-title">Availability</div>
+            <div class="filter-option">
+              <input type="checkbox" id="prime" checked>
+              <label for="prime">Prime Delivery (94)</label>
+            </div>
+            <div class="filter-option">
+              <input type="checkbox" id="stock">
+              <label for="stock">In Stock (112)</label>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Products Section -->
+        <div class="products-section">
+          <div class="products-header">
+            <h3>1-24 of 126 results for "Football"</h3>
+            <div>
+              <span>Sort by:</span>
+              <select class="sort-options">
+                <option>Featured</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Avg. Customer Review</option>
+                <option>Newest Arrivals</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+              <div class="product-badge">Bestseller</div>
+              <div class="product-image">
+                <img src="Arsenalhome.jpg" alt="Arsenal Home Jersey">
+              </div>
+              <div class="product-info">
+                <div class="product-title">Arsenal 2024/25 Home Authentic Jersey</div>
+                <div class="product-rating">
+                  <span class="stars">★★★★★</span>
+                  <span class="rating-count">1,248</span>
+                </div>
+                <div class="product-price">
+                  <span class="current-price">M1500.00</span>
+                  <span class="original-price">M2000.00</span>
+                  <span class="discount">(25% off)</span>
+                </div>
+                <div class="delivery-info">
+                  <div>Get it <strong>Tomorrow, Mar 16</strong></div>
+                  <div class="prime-badge">FREE Prime Delivery</div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+              </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+              <div class="product-badge">Limited</div>
+              <div class="product-image">
+                <img src="premierleagueball.jpg" alt="Premier League Ball">
+              </div>
+              <div class="product-info">
+                <div class="product-title">Official Premier League 2024/25 Match Ball</div>
+                <div class="product-rating">
+                  <span class="stars">★★★★☆</span>
+                  <span class="rating-count">587</span>
+                </div>
+                <div class="product-price">
+                  <span class="current-price">M435.00</span>
+                  <span class="original-price">M500.00</span>
+                  <span class="discount">(13% off)</span>
+                </div>
+                <div class="delivery-info">
+                  <div>Get it <strong>Monday, Mar 18</strong></div>
+                  <div class="prime-badge">FREE Prime Delivery</div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+              </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img src="footballCleats.webp" alt="Football Cleats">
+              </div>
+              <div class="product-info">
+                <div class="product-title">Nike Mercurial Vapor 15 Elite FG Football Boots</div>
+                <div class="product-rating">
+                  <span class="stars">★★★★★</span>
+                  <span class="rating-count">892</span>
+                </div>
+                <div class="product-price">
+                  <span class="current-price">M2499.99</span>
+                </div>
+                <div class="delivery-info">
+                  <div>Get it <strong>Tomorrow, Mar 16</strong></div>
+                  <div class="prime-badge">FREE Prime Delivery</div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+              </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card">
+              <div class="product-badge">Deal</div>
+              <div class="product-image">
+                <img src="LiverpoolTrainningkit.jpeg" alt="Training Jersey">
+              </div>
+              <div class="product-info">
+                <div class="product-title">Liverpool 2024 Training Jersey</div>
+                <div class="product-rating">
+                  <span class="stars">★★★★☆</span>
+                  <span class="rating-count">324</span>
+                </div>
+                <div class="product-price">
+                  <span class="current-price">M1350.00</span>
+                  <span class="original-price">M1800.00</span>
+                  <span class="discount">(25% off)</span>
+                </div>
+                <div class="delivery-info">
+                  <div>Get it <strong>Tomorrow, Mar 16</strong></div>
+                  <div class="prime-badge">FREE Prime Delivery</div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+              </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img src="goalkeepergloves.jpeg" alt="Goalkeeper Gloves">
+              </div>
+              <div class="product-info">
+                <div class="product-title">Adidas Predator Elite Goalkeeper Gloves</div>
+                <div class="product-rating">
+                  <span class="stars">★★★★★</span>
+                  <span class="rating-count">156</span>
+                </div>
+                <div class="product-price">
+                  <span class="current-price">M700.00</span>
+                </div>
+                <div class="delivery-info">
+                  <div>Get it <strong>Monday, Mar 18</strong></div>
+                  <div class="prime-badge">FREE Prime Delivery</div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+              </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card">
+              <div class="product-badge">New</div>
+              <div class="product-image">
+                <img src="footballshorts.jpeg" alt="Football Shorts">
+              </div>
+              <div class="product-info">
+                <div class="product-title">Liverpool 2024/25 Stadium Home Shorts</div>
+                <div class="product-rating">
+                  <span class="stars">★★★★☆</span>
+                  <span class="rating-count">87</span>
+                </div>
+                <div class="product-price">
+                  <span class="current-price">M800.00</span>
+                  <span class="original-price">M1000.00</span>
+                  <span class="discount">(20% off)</span>
+                </div>
+                <div class="delivery-info">
+                  <div>Get it <strong>Tomorrow, Mar 16</strong></div>
+                  <div class="prime-badge">FREE Prime Delivery</div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+              </div>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="product-card">
+              <div class="product-image">
+                <img src="Scarf.jpg" alt="Football Scarf">
+              </div>
+              <div class="product-info">
+                <div class="product-title">Official Chelsea FC Wool Blend Scarf</div>
+                <div class="product-rating">
+                  <span class="stars">★★★★★</span>
+                  <span class="rating-count">432</span>
+                </div>
+                <div class="product-price">
+                  <span class="current-price">M400.00</span>
+                </div>
+                <div class="delivery-info">
+                  <div>Get it <strong>Tomorrow, Mar 16</strong></div>
+                  <div class="prime-badge">FREE Prime Delivery</div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+              </div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product-card">
+              <div class="product-badge">Deal</div>
+              <div class="product-image">
+                <img src="socks.jpg" alt="Football Socks">
+              </div>
+              <div class="product-info">
+                <div class="product-title">Nike Strike Premier League Team Socks (3 Pairs)</div>
+                <div class="product-rating">
+                  <span class="stars">★★★★☆</span>
+                  <span class="rating-count">289</span>
+                </div>
+                <div class="product-price">
+                  <span class="current-price">M201.00</span>
+                  <span class="original-price">M300.00</span>
+                  <span class="discount">(33% off)</span>
+                </div>
+                <div class="delivery-info">
+                  <div>Get it <strong>Tomorrow, Mar 16</strong></div>
+                  <div class="prime-badge">FREE Prime Delivery</div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pagination">
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn">5</button>
+            <button class="page-btn">Next →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <div class="cart-summary">
+    <span>Cart</span>
+    <div class="cart-count">0</div>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 SportHive. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    // Shopping cart functionality
+    let cartItems = 0;
+    
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', function() {
+        cartItems++;
+        updateCartCount();
+        showCartNotification(this);
+      });
+    });
+    
+    function updateCartCount() {
+      document.querySelector('.cart-count').textContent = cartItems;
+    }
+    
+    function showCartNotification(button) {
+      const productCard = button.closest('.product-card');
+      const productName = productCard.querySelector('.product-title').textContent;
+      
+      const notification = document.createElement('div');
+      notification.style.position = 'fixed';
+      notification.style.bottom = '80px';
+      notification.style.right = '20px';
+      notification.style.backgroundColor = '#012350';
+      notification.style.color = 'white';
+      notification.style.padding = '1rem';
+      notification.style.borderRadius = '8px';
+      notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+      notification.style.zIndex = '100';
+      notification.style.maxWidth = '300px';
+      notification.innerHTML = `
+        <div>Added to Cart:</div>
+        <div><strong>${productName}</strong></div>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.style.transition = 'opacity 0.5s';
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 500);
+      }, 3000);
+    }
+    
+    // Filter functionality would go here in a real implementation
+  </script>
+</body>
+</html>

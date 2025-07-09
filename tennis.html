@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportHive - Tennis</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Clean tennis styles without images */
+    .tournament-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .tournament-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      color: #000;
+      transition: transform 0.3s ease;
+    }
+    
+    .tournament-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .tournament-header {
+      background: #012350;
+      color: #ffd700;
+      padding: 1rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    
+    .match-list {
+      padding: 1rem;
+    }
+    
+    .match-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .players {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .player {
+      margin: 0.3rem 0;
+      font-weight: 500;
+    }
+    
+    .match-score {
+      font-weight: bold;
+      margin: 0 1rem;
+      white-space: nowrap;
+      text-align: center;
+      min-width: 60px;
+    }
+    
+    .match-status {
+      font-size: 0.8rem;
+      color: #555;
+      white-space: nowrap;
+    }
+    
+    .live-indicator {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    .highlight-item {
+      padding: 1rem 0;
+      border-top: 1px solid #eee;
+    }
+    
+    .highlight-title {
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+    
+    .highlight-meta {
+      font-size: 0.8rem;
+      color: #555;
+    }
+    
+    .view-all {
+      display: block;
+      text-align: center;
+      padding: 0.8rem;
+      color: #012350;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    
+    .view-all:hover {
+      background: #f5f5f5;
+    }
+    
+    .tournament-stage {
+      font-size: 0.9rem;
+      color: #333;
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SportHive - Tennis</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="football.html">Football</a></li>
+        <li><a href="basketball.html">Basketball</a></li>
+        <li><a href="tennis.html">Tennis</a></li>
+        <li><a href="cricket.html">Cricket</a></li>
+        <li><a href="betting.html">Betting</a></li>
+        <li><a href="merchandise.html">Merchandise</a></li>
+        <li><a href="statistics.html">Statistics</a></li>
+        <li><a href="fixtures.html">Fixtures</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="content">
+      <h2>Tennis Tournaments</h2>
+      
+      <div class="tournament-container">
+        <!-- Grand Slams Card -->
+        <div class="tournament-card">
+          <div class="tournament-header">
+            Grand Slams
+          </div>
+          <div class="match-list">
+            <div class="match-item">
+              <div class="players">
+                <div class="player">Djokovic N.</div>
+                <div class="player">Alcaraz C.</div>
+                <div class="tournament-stage">Australian Open Final</div>
+              </div>
+              <div class="match-score">6-4, 5-7, 6-4</div>
+              <div class="match-status live-indicator">3rd Set</div>
+            </div>
+            
+            <div class="match-item">
+              <div class="players">
+                <div class="player">Świątek I.</div>
+                <div class="player">Sabalenka A.</div>
+                <div class="tournament-stage">Wimbledon SF</div>
+              </div>
+              <div class="match-score">vs</div>
+              <div class="match-status">Tomorrow 14:00</div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-title">Australian Open: Djokovic vs Sinner SF Highlights</div>
+              <div class="highlight-meta">15 Mar 2025 • 12:34</div>
+            </div>
+            
+            <a href="#" class="view-all">View all Grand Slam matches →</a>
+          </div>
+        </div>
+        
+        <!-- ATP Tour Card -->
+        <div class="tournament-card">
+          <div class="tournament-header">
+            ATP Tour
+          </div>
+          <div class="match-list">
+            <div class="match-item">
+              <div class="players">
+                <div class="player">Medvedev D.</div>
+                <div class="player">Sinner J.</div>
+                <div class="tournament-stage">Indian Wells Final</div>
+              </div>
+              <div class="match-score">7-6, 6-3</div>
+              <div class="match-status">FT</div>
+            </div>
+            
+            <div class="match-item">
+              <div class="players">
+                <div class="player">Rublev A.</div>
+                <div class="player">Rune H.</div>
+                <div class="tournament-stage">Miami Open QF</div>
+              </div>
+              <div class="match-score">vs</div>
+              <div class="match-status">Fri 18:30</div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-title">Dubai Championships: Medvedev vs Rublev Final</div>
+              <div class="highlight-meta">14 Mar 2025 • 9:21</div>
+            </div>
+            
+            <a href="#" class="view-all">View all ATP matches →</a>
+          </div>
+        </div>
+        
+        <!-- WTA Tour Card -->
+        <div class="tournament-card">
+          <div class="tournament-header">
+            WTA Tour
+          </div>
+          <div class="match-list">
+            <div class="match-item">
+              <div class="players">
+                <div class="player">Gauff C.</div>
+                <div class="player">Rybakina E.</div>
+                <div class="tournament-stage">Doha Final</div>
+              </div>
+              <div class="match-score">6-4, 3-6, 6-4</div>
+              <div class="match-status">FT</div>
+            </div>
+            
+            <div class="match-item">
+              <div class="players">
+                <div class="player">Pegula J.</div>
+                <div class="player">Jabeur O.</div>
+                <div class="tournament-stage">Charleston SF</div>
+              </div>
+              <div class="match-score">vs</div>
+              <div class="match-status">Sun 16:00</div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-title">WTA Finals: Świątek vs Sabalenka Highlights</div>
+              <div class="highlight-meta">12 Mar 2025 • 11:45</div>
+            </div>
+            
+            <a href="#" class="view-all">View all WTA matches →</a>
+          </div>
+        </div>
+        
+        <!-- Davis Cup Card -->
+        <div class="tournament-card">
+          <div class="tournament-header">
+            Davis Cup
+          </div>
+          <div class="match-list">
+            <div class="match-item">
+              <div class="players">
+                <div class="player">Spain</div>
+                <div class="player">Canada</div>
+                <div class="tournament-stage">Quarterfinal</div>
+              </div>
+              <div class="match-score">2-1</div>
+              <div class="match-status">FT</div>
+            </div>
+            
+            <div class="match-item">
+              <div class="players">
+                <div class="player">Australia</div>
+                <div class="player">Croatia</div>
+                <div class="tournament-stage">Semifinal</div>
+              </div>
+              <div class="match-score">vs</div>
+              <div class="match-status">Sat 12:00</div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-title">Davis Cup: Italy vs USA Highlights</div>
+              <div class="highlight-meta">11 Mar 2025 • 8:30</div>
+            </div>
+            
+            <a href="#" class="view-all">View all Davis Cup matches →</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="features">
+        <a href="betting.html" class="btn">Bet on Matches</a>
+        <a href="merchandise.html" class="btn">Buy Merchandise</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 SportHive. All rights reserved.</p>
+  </footer>
+</body>
+</html>

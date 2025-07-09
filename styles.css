@@ -1,0 +1,182 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffd700, #ffcc00);
+    color: #000;
+  }
+  
+  header {
+    background: linear-gradient(135deg, #272626, #dee761e5);
+    color: #ffd700;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(196, 194, 84, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  header .logo h1 {
+    margin: 0;
+    font-size: 2.5em;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  header .logo p {
+    margin: 0;
+    font-size: 1.2em;
+    animation: fadeIn 2.5s ease-in-out;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    animation: slideIn 1s ease-in-out;
+  }
+  
+  nav ul li {
+    margin: 0 15px;
+  }
+  
+  nav ul li a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #fff;
+  }
+  
+  section {
+    padding: 40px 20px;
+    margin: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-in-out;
+  }
+  
+  h2 {
+    color: #000000;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .home-section {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .hero {
+    background: url('rugby.jpeg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .hero h2 {
+    font-size: 3em;
+    margin: 0;
+  }
+  
+  .hero p {
+    font-size: 1.5em;
+  }
+  
+  .ad-section {
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .betting-ad {
+    background: linear-gradient(135deg, #000, #333);
+  }
+  
+  .merchandise-ad {
+    background: linear-gradient(135deg, #ffd700, #ffcc00);
+    image-resolution: 10px;
+    image-rendering: crisp-edges;
+  }
+  
+  .premium-ad {
+    background: linear-gradient(135deg, #000, #333);
+  }
+  
+  .matches-ad {
+    background: linear-gradient(135deg, #ffd700, #ffcc00);
+  }
+  
+  .cta-button {
+    background: #ffd700;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background: #ffcc00;
+  }
+  
+  .about-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .mission, .ethics {
+    width: 45%;
+    margin: 10px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ethics ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .ethics ul li {
+    margin: 10px 0;
+  }
+  
+  footer {
+    background: linear-gradient(135deg, #000, #333);
+    color: #ffd700;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes fadeInUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportHive - Basketball</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Clean basketball styles without images */
+    .league-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .league-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      color: #000;
+      transition: transform 0.3s ease;
+    }
+    
+    .league-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .league-header {
+      background: #012350;
+      color: #ffd700;
+      padding: 1rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    
+    .match-list {
+      padding: 1rem;
+    }
+    
+    .match-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .match-teams {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .team {
+      margin: 0.3rem 0;
+      font-weight: 500;
+    }
+    
+    .home-team::before {
+      content: "🏠 ";
+    }
+    
+    .match-score {
+      font-weight: bold;
+      margin: 0 1rem;
+      white-space: nowrap;
+    }
+    
+    .match-status {
+      font-size: 0.8rem;
+      color: #555;
+      white-space: nowrap;
+    }
+    
+    .live-indicator {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    .highlight-item {
+      padding: 1rem 0;
+      border-top: 1px solid #eee;
+    }
+    
+    .highlight-title {
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+    
+    .highlight-meta {
+      font-size: 0.8rem;
+      color: #555;
+    }
+    
+    .view-all {
+      display: block;
+      text-align: center;
+      padding: 0.8rem;
+      color: #012350;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    
+    .view-all:hover {
+      background: #f5f5f5;
+    }
+    
+    .player-stats {
+      font-size: 0.9rem;
+      color: #333;
+      margin-top: 0.2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SportHive - Basketball</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="football.html">Football</a></li>
+        <li><a href="basketball.html">Basketball</a></li>
+        <li><a href="tennis.html">Tennis</a></li>
+        <li><a href="cricket.html">Cricket</a></li>
+        <li><a href="betting.html">Betting</a></li>
+        <li><a href="merchandise.html">Merchandise</a></li>
+        <li><a href="statistics.html">Statistics</a></li>
+        <li><a href="fixtures.html">Fixtures</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="content">
+      <h2>Basketball Leagues</h2>
+      
+      <div class="league-container">
+        <!-- NBA Card -->
+        <div class="league-card">
+          <div class="league-header">
+            NBA
+          </div>
+          <div class="match-list">
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">LA Lakers</div>
+                <div class="team">Golden State</div>
+                <div class="player-stats">James 28pts | Curry 32pts</div>
+              </div>
+              <div class="match-score">112 - 115</div>
+              <div class="match-status live-indicator">Q4 3:42</div>
+            </div>
+            
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">Boston Celtics</div>
+                <div class="team">Miami Heat</div>
+              </div>
+              <div class="match-score">vs</div>
+              <div class="match-status">Today 19:30</div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-title">Lakers vs Warriors Highlights</div>
+              <div class="highlight-meta">15 Mar 2025 • 8:45</div>
+            </div>
+            
+            <a href="#" class="view-all">View all NBA matches →</a>
+          </div>
+        </div>
+        
+        <!-- EuroLeague Card -->
+        <div class="league-card">
+          <div class="league-header">
+            EuroLeague
+          </div>
+          <div class="match-list">
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">Real Madrid</div>
+                <div class="team">CSKA Moscow</div>
+                <div class="player-stats">Campazzo 22pts | Shengelia 18pts</div>
+              </div>
+              <div class="match-score">89 - 84</div>
+              <div class="match-status">FT</div>
+            </div>
+            
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">Barcelona</div>
+                <div class="team">Olympiacos</div>
+              </div>
+              <div class="match-score">vs</div>
+              <div class="match-status">Tomorrow 20:00</div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-title">Real Madrid vs CSKA Highlights</div>
+              <div class="highlight-meta">14 Mar 2025 • 7:30</div>
+            </div>
+            
+            <a href="#" class="view-all">View all EuroLeague matches →</a>
+          </div>
+        </div>
+        
+        <!-- CBA Card -->
+        <div class="league-card">
+          <div class="league-header">
+            Chinese Basketball Association
+          </div>
+          <div class="match-list">
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">Guangdong</div>
+                <div class="team">Liaoning</div>
+                <div class="player-stats">Weems 31pts | Guo 28pts</div>
+              </div>
+              <div class="match-score">105 - 98</div>
+              <div class="match-status">FT</div>
+            </div>
+            
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">Beijing</div>
+                <div class="team">Shanghai</div>
+              </div>
+              <div class="match-score">vs</div>
+              <div class="match-status">Sun 19:35</div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-title">Guangdong vs Liaoning Highlights</div>
+              <div class="highlight-meta">12 Mar 2025 • 6:15</div>
+            </div>
+            
+            <a href="#" class="view-all">View all CBA matches →</a>
+          </div>
+        </div>
+        
+        <!-- NCAA Card -->
+        <div class="league-card">
+          <div class="league-header">
+            NCAA
+          </div>
+          <div class="match-list">
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">Duke</div>
+                <div class="team">North Carolina</div>
+                <div class="player-stats">Proctor 24pts | Davis 22pts</div>
+              </div>
+              <div class="match-score">78 - 75</div>
+              <div class="match-status">FT</div>
+            </div>
+            
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">Kentucky</div>
+                <div class="team">Kansas</div>
+              </div>
+              <div class="match-score">vs</div>
+              <div class="match-status">Sat 18:00</div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-title">Duke vs UNC Highlights</div>
+              <div class="highlight-meta">11 Mar 2025 • 9:20</div>
+            </div>
+            
+            <a href="#" class="view-all">View all NCAA matches →</a>
+          </div>
+        </div>
+        
+        <!-- WNBA Card -->
+        <div class="league-card">
+          <div class="league-header">
+            WNBA
+          </div>
+          <div class="match-list">
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">Las Vegas Aces</div>
+                <div class="team">Chicago Sky</div>
+                <div class="player-stats">Wilson 25pts | Copper 20pts</div>
+              </div>
+              <div class="match-score">88 - 82</div>
+              <div class="match-status">FT</div>
+            </div>
+            
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">Seattle Storm</div>
+                <div class="team">Connecticut Sun</div>
+              </div>
+              <div class="match-score">vs</div>
+              <div class="match-status">Fri 20:00</div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-title">Aces vs Sky Highlights</div>
+              <div class="highlight-meta">10 Mar 2025 • 7:45</div>
+            </div>
+            
+            <a href="#" class="view-all">View all WNBA matches →</a>
+          </div>
+        </div>
+        
+        <!-- NBA G-League Card -->
+        <div class="league-card">
+          <div class="league-header">
+            NBA G-League
+          </div>
+          <div class="match-list">
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">South Bay Lakers</div>
+                <div class="team">Santa Cruz Warriors</div>
+                <div class="player-stats">Pippen Jr. 30pts | Quinones 25pts</div>
+              </div>
+              <div class="match-score">105 - 99</div>
+              <div class="match-status">FT</div>
+            </div>
+            
+            <div class="match-item">
+              <div class="match-teams">
+                <div class="team home-team">Raptors 905</div>
+                <div class="team">Maine Celtics</div>
+              </div>
+              <div class="match-score">vs</div>
+              <div class="match-status">Thu 19:00</div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-title">South Bay vs Santa Cruz Highlights</div>
+              <div class="highlight-meta">9 Mar 2025 • 6:30</div>
+            </div>
+            
+            <a href="#" class="view-all">View all G-League matches →</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="features">
+        <a href="betting.html" class="btn">Bet on Matches</a>
+        <a href="merchandise.html" class="btn">Buy Merchandise</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 SportHive. All rights reserved.</p>
+  </footer>
+</body>
+</html>
